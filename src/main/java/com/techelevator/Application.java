@@ -42,6 +42,10 @@ public class Application  {
 								break; // Break out of the inner switch to return to the purchase menu
 
 							case "2":
+								vendingMachine.displayInventory();
+								System.out.println("Enter slot location");
+								String productSlot = userInput.nextLine();
+								vendingMachine.purchaseProduct(productSlot);
 								break; // Proceed to the Purchase
 
 							case "3":
