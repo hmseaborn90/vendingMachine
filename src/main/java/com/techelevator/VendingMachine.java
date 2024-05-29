@@ -6,16 +6,18 @@ import java.util.Scanner;
 
 public class VendingMachine {
     private double balance;
+    private double totalSales;
 
-    ProductInventory inventory = new ProductInventory();
+    ProductInventory productInventory = new ProductInventory();
 
     public void purchaseProduct(String slotLocation) {
-        Product product = inventory.getProductBySlot(slotLocation);
+        Product product = productInventory.getProductBySlot(slotLocation);
         if (product.getProductPrice() <= balance) {
-            withdraw(product.getProductPrice());
+            purchase(product.getProductPrice());
+            product.decreaseProductQuantity();
             System.out.println("Balance:" + balance);
             System.out.println("Name: " + product.getProductName() + "Price: " + product.getProductPrice() + " " + product);
-            inventory.displayInventory();
+            productInventory.displayInventory();
         }
 
     }
@@ -30,16 +32,16 @@ public class VendingMachine {
                 double productPrice = Double.parseDouble(productData[2]);
                 String productType = productData[3];
                 if (productType.equalsIgnoreCase("Chip")) {
-                    inventory.addProduct(new Chip(productSlotNumber, productName, productPrice, productType));
+                    productInventory.addProduct(new Chip(productSlotNumber, productName, productPrice, productType));
                 }
                 if (productType.equalsIgnoreCase("Candy")) {
-                    inventory.addProduct(new Candy(productSlotNumber, productName, productPrice, productType));
+                    productInventory.addProduct(new Candy(productSlotNumber, productName, productPrice, productType));
                 }
                 if (productType.equalsIgnoreCase("Drink")) {
-                    inventory.addProduct(new Drink(productSlotNumber, productName, productPrice, productType));
+                    productInventory.addProduct(new Drink(productSlotNumber, productName, productPrice, productType));
                 }
                 if (productType.equalsIgnoreCase("Gum")) {
-                    inventory.addProduct(new Gum(productSlotNumber, productName, productPrice, productType));
+                    productInventory.addProduct(new Gum(productSlotNumber, productName, productPrice, productType));
                 }
 
             }
@@ -61,16 +63,17 @@ public class VendingMachine {
         balance += amountFed;
     }
 
-    public void withdraw(double amountToWithdraw) {
+    public void purchase(double amountToWithdraw) {
         balance -= amountToWithdraw;
+        totalSales += amountToWithdraw;
     }
 
     public void displayInventory() {
-        inventory.displayInventory();
+        productInventory.displayInventory();
     }
 
     public void displayPurchaseMenu() {
-        inventory.purchaseDisplayMenu(balance);
+        productInventory.purchaseDisplayMenu(balance);
     }
 
     public void displayMainMenu() {

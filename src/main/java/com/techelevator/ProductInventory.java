@@ -28,7 +28,12 @@ public class ProductInventory {
 
     public void displayInventory() {
         for (Product product : products) {
-            System.out.println(product.getSlotLocation() + " | " + product.getProductName() + " | " + product.getProductPrice());
+            if(product.getProductQuantity() == 0){
+                System.out.println(product.getSlotLocation() + " | " + "Sold Out");
+            }else{
+                System.out.println(product.getSlotLocation() + " | " + product.getProductName() + " | " + product.getProductPrice());
+            }
+
 
         }
     }

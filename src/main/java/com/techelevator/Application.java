@@ -36,10 +36,10 @@ public class Application  {
 									String addMoreMoney = userInput.nextLine();
 
 									if (!addMoreMoney.equalsIgnoreCase("Y")) {
-										break; // Exit the loop for adding money
+										break;
 									}
 								}
-								break; // Break out of the inner switch to return to the purchase menu
+								break;
 
 							case "2":
 								vendingMachine.displayInventory();
@@ -51,6 +51,7 @@ public class Application  {
 							case "3":
 								break; // Exit
 						}
+						
 					}
 
 				case "3":

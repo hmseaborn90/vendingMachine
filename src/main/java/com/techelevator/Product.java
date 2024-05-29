@@ -56,5 +56,8 @@ public class Product {
     public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
     }
+    public void decreaseProductQuantity(){
+        productQuantity -= 1;
+    }
 
 }
