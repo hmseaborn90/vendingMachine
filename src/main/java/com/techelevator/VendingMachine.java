@@ -13,11 +13,16 @@ public class VendingMachine {
     public void purchaseProduct(String slotLocation) {
         Product product = productInventory.getProductBySlot(slotLocation);
         if (product.getProductPrice() <= balance) {
-            purchase(product.getProductPrice());
-            product.decreaseProductQuantity();
-            System.out.println("Balance:" + balance);
-            System.out.println("Name: " + product.getProductName() + "Price: " + product.getProductPrice() + " " + product);
-            productInventory.displayInventory();
+            if(product.getProductQuantity() == 0){
+                System.out.println("sorry item is currently sold out please make another selection");
+            }else{
+                purchase(product.getProductPrice());
+                product.decreaseProductQuantity();
+                System.out.println("Balance:" + balance);
+                System.out.println("Name: " + product.getProductName() + "Price: " + product.getProductPrice() + " " + product);
+                productInventory.displayInventory();
+            }
+
         }
 
     }
@@ -50,6 +55,7 @@ public class VendingMachine {
         }
 
     }
+
 
     public double getBalance() {
         return balance;
