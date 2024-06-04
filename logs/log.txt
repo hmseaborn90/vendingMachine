@@ -1,0 +1,7 @@
+2024/06/04 12:38:29 Vending Machine Started2024/06/04 12:44:56 Vending Machine Started2024/06/04 12:45:06 Feed Money:$10.00 $10.002024/06/04 12:45:43 Vending Machine Started
+2024/06/04 12:46:20 Vending Machine Started
+2024/06/04 12:46:24 Feed Money:$10.00 $10.00
+2024/06/04 12:47:44 Feed Money:$20.00 $30.00
+2024/06/04 12:52:58 Vending Machine Started
+2024/06/04 12:53:05 Feed Money: $10.00 $10.00
+2024/06/04 12:53:11 Triplemint D4 $0.75 $9.25

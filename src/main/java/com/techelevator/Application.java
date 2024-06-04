@@ -1,23 +1,18 @@
 package com.techelevator;
 
+import com.techelevator.util.Logger;
+
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Application {
 	private static Scanner userInput = new Scanner(System.in);
+	public  static NumberFormat currency = NumberFormat.getCurrencyInstance();
 
 	public static void main(String[] args) {
-//  $$\    $$\                        $$\                $$\      $$\          $$\    $$\                 $$$$$$\  $$$$$$\  $$$$$$\  $$$$$$\
-//  $$ |   $$ |                       $$ |               $$$\    $$$ |         $$ |   \__|               $$  __$$\$$$ __$$\$$$ __$$\$$$ __$$\
-//  $$ |   $$ |$$$$$$\ $$$$$$$\  $$$$$$$ |$$$$$$\        $$$$\  $$$$ |$$$$$$\$$$$$$\  $$\ $$$$$$$\       $$ /  $$ $$$$\ $$ $$$$\ $$ $$$$\ $$ |
-//  \$$\  $$  $$  __$$\$$  __$$\$$  __$$ $$  __$$\       $$\$$\$$ $$ |\____$$\_$$  _| $$ $$  _____|      \$$$$$$$ $$\$$\$$ $$\$$\$$ $$\$$\$$ |
-//   \$$\$$  /$$$$$$$$ $$ |  $$ $$ /  $$ $$ /  $$ |      $$ \$$$  $$ |$$$$$$$ |$$ |   $$ $$ /             \____$$ $$ \$$$$ $$ \$$$$ $$ \$$$$ |
-//    \$$$  / $$   ____$$ |  $$ $$ |  $$ $$ |  $$ |      $$ |\$  /$$ $$  __$$ |$$ |$$\$$ $$ |            $$\   $$ $$ |\$$$ $$ |\$$$ $$ |\$$$ |
-//     \$  /  \$$$$$$$\$$ |  $$ \$$$$$$$ \$$$$$$  |      $$ | \_/ $$ \$$$$$$$ |\$$$$  $$ \$$$$$$$\       \$$$$$$  \$$$$$$  \$$$$$$  \$$$$$$  /
-//      \_/    \_______\__|  \__|\_______|\______/       \__|     \__|\_______| \____/\__|\_______|       \______/ \______/ \______/ \______/
-//
-//
-//
+		Logger.log("Vending Machine Started");
+
 		VendingMachine vendingMachine = new VendingMachine();
 		vendingMachine.loadInventoryFromFile("vendingmachine.csv");
 
@@ -28,7 +23,6 @@ public class Application {
 			switch (userChoice) {
 				case "1":
 					vendingMachine.displayInventory();
-					System.out.println("(2) purchase");
 					break;
 
 				case "2":
@@ -79,8 +73,14 @@ public class Application {
 			try{
 				String value = userInput.nextLine();
 				double amount = Double.parseDouble(value);
+				if(amount < 1.00){
+					System.out.println("Sorry we can only accept whole dollars at this time please insert acceptable amount");
+					continue;
+				}
 				vendingMachine.feedMoney(amount);
-				System.out.println("Current Money Provided: " + vendingMachine.getBalance());
+				System.out.println("Current Money Provided: " + currency.format(vendingMachine.getBalance()));
+				String logMessage = String.format("Feed Money: %s %s",currency.format(amount), currency.format(vendingMachine.getBalance()));
+				Logger.log(logMessage);
 			}catch(NumberFormatException e){
 				System.err.println("Invalid input please insert dollar amount or change to be added");
 				continue;

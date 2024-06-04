@@ -3,6 +3,9 @@ package com.techelevator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.techelevator.Application.currency;
+
+
 public class ProductInventory {
     private List<Product> products;
 
@@ -20,7 +23,7 @@ public class ProductInventory {
 
     public void purchaseDisplayMenu(double balance){
         System.out.println(
-                "Current Money Provided: " + balance+"\n" +
+                "Current Money Provided: " + currency.format(balance)+"\n" +
                 "    > (1) FeedMoney\n" +
                 "    > (2) Select Product\n" +
                 "    > (3) Finish Transaction");
@@ -31,7 +34,7 @@ public class ProductInventory {
             if(product.getProductQuantity() == 0){
                 System.out.println(product.getSlotLocation() + " | " + "Sold Out");
             }else{
-                System.out.println(product.getSlotLocation() + " | " + product.getProductName() + " | " + product.getProductPrice());
+                System.out.println(product.getSlotLocation() + " | " + product.getProductName() + " | " + currency.format(product.getProductPrice()));
             }
 
 

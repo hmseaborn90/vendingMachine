@@ -1,10 +1,17 @@
 package com.techelevator;
 
+import com.techelevator.util.Logger;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.NumberFormat;
 import java.util.Scanner;
 
+import static com.techelevator.Application.currency;
+
+
 public class VendingMachine {
+
     private double balance;
     private double totalSales;
 
@@ -12,19 +19,26 @@ public class VendingMachine {
 
     public void purchaseProduct(String slotLocation) {
         Product product = productInventory.getProductBySlot(slotLocation);
-        if (product.getProductPrice() <= balance) {
-            if(product.getProductQuantity() == 0){
-                System.out.println("sorry item is currently sold out please make another selection");
-            }else{
-                purchase(product.getProductPrice());
-                product.decreaseProductQuantity();
-                System.out.println("Balance:" + balance);
-                System.out.println("Name: " + product.getProductName() + "Price: " + product.getProductPrice() + " " + product);
-                productInventory.displayInventory();
+        if(product ==  null){
+            System.out.println("Invalid Slot location enter valid slot location");
+        }else{
+            if (product.getProductPrice() <= balance) {
+
+                if(product.getProductQuantity() == 0){
+                    System.out.println("sorry item is currently sold out please make another selection");
+                }else{
+                    purchase(product.getProductPrice());
+                    product.decreaseProductQuantity();
+                    String balanceRemaining = currency.format(balance);
+                    String logProduct = String.format("%s %s %s", product.getProductName(), product.getSlotLocation(), currency.format(product.getProductPrice()));
+                    System.out.println("Balance:" + balanceRemaining);
+                    System.out.println("Name: " + product.getProductName() + " Price: " + currency.format(product.getProductPrice()) + " " + product);
+                    Logger.log(logProduct + " " + balanceRemaining);
+                    productInventory.displayInventory();
+                }
+
             }
-
         }
-
     }
 
     public void loadInventoryFromFile(String filePath) {
@@ -55,6 +69,20 @@ public class VendingMachine {
         }
 
     }
+    public void displayInventory() {
+        productInventory.displayInventory();
+    }
+
+    public void displayPurchaseMenu() {
+        productInventory.purchaseDisplayMenu(balance);
+    }
+
+    public void displayMainMenu() {
+        System.out.println(
+                "    > (1) Display Vending Machine Items\n" +
+                "    > (2) Purchase\n" +
+                "    > (3) Exit");
+    }
 
 
     public double getBalance() {
@@ -74,18 +102,4 @@ public class VendingMachine {
         totalSales += amountToWithdraw;
     }
 
-    public void displayInventory() {
-        productInventory.displayInventory();
-    }
-
-    public void displayPurchaseMenu() {
-        productInventory.purchaseDisplayMenu(balance);
-    }
-
-    public void displayMainMenu() {
-        System.out.println(
-                "    > (1) Display Vending Machine Items\n" +
-                "    > (2) Purchase\n" +
-                "    > (3) Exit");
-    }
 }
