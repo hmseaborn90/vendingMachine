@@ -23,7 +23,7 @@ public class ProductInventory {
                 "Current Money Provided: " + balance+"\n" +
                 "    > (1) FeedMoney\n" +
                 "    > (2) Select Product\n" +
-                "    > (3) Exit");
+                "    > (3) Finish Transaction");
     }
 
     public void displayInventory() {
