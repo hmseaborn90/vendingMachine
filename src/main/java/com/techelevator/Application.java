@@ -24,14 +24,15 @@ public class Application {
 				case "1":
 					vendingMachine.displayInventory();
 					break;
-
 				case "2":
-					// Display Purchase Menu
 					handlePurchaseMenu(vendingMachine);
 					break;
 				case "3":
 					System.out.println("Goodbye");
 					isShouldExit = true;
+					break;
+				case "4":
+					vendingMachine.getSalesReport();
 					break;
 				default:
 					System.out.println("Invalid selection please try again");
@@ -57,6 +58,7 @@ public class Application {
 					vendingMachine.purchaseProduct(productSlot.toUpperCase());
 					break;
 				case "3":
+					vendingMachine.giveChange();
 					isFinished = true;
 					break;
 				default:

@@ -16,8 +16,6 @@ public class Product {
         this.productQuantity = 5;
     }
 
-
-
     public String getSlotLocation() {
         return slotLocation;
     }
