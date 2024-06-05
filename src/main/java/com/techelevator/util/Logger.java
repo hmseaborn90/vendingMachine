@@ -28,7 +28,7 @@ public class Logger {
 
             }
         }
-        logWriter.println(date.format(formatter)+" "+message);
+        logWriter.println(date.format(formatter) + " " + message);
         logWriter.flush();
     }
 }

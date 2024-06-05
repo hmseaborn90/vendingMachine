@@ -50,7 +50,7 @@ public class VendingMachine {
         addToProductsSold(product.getProductName());
         String balanceRemaining = currency.format(balance);
         String logMessage = String.format("%s %s %s",
-                product.getProductName(), 
+                product.getProductName(),
                 product.getSlotLocation(),
                 currency.format(product.getProductPrice()));
         System.out.println("Balance: " + balanceRemaining);
@@ -89,7 +89,7 @@ public class VendingMachine {
 //        }
 //    }
 
-    public void giveChange(){
+    public void giveChange() {
         int balanceInCents = (int) (balance * 100);
         int quarters = balanceInCents / 25;
         int remainder = balanceInCents % 25;
@@ -105,12 +105,13 @@ public class VendingMachine {
         balance = 0;
     }
 
-    private void addToProductsSold(String name){
-        productsSold.put(name, productsSold.getOrDefault(name,0) + 1);
+    private void addToProductsSold(String name) {
+        productsSold.put(name, productsSold.getOrDefault(name, 0) + 1);
     }
-    public void getSalesReport(){
 
-        for(Map.Entry<String, Integer> entry : productsSold.entrySet()){
+    public void getSalesReport() {
+
+        for (Map.Entry<String, Integer> entry : productsSold.entrySet()) {
             System.out.println(entry.getKey() + "|" + entry.getValue());
         }
         System.out.println("**TOTAL SALES** " + currency.format(totalSales));
@@ -144,6 +145,7 @@ public class VendingMachine {
         }
 
     }
+
     public void displayInventory() {
         productInventory.displayInventory();
     }
@@ -155,8 +157,8 @@ public class VendingMachine {
     public void displayMainMenu() {
         System.out.println(
                 "    > (1) Display Vending Machine Items\n" +
-                "    > (2) Purchase\n" +
-                "    > (3) Exit");
+                        "    > (2) Purchase\n" +
+                        "    > (3) Exit");
     }
 
 

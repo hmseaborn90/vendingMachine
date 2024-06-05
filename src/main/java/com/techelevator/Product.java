@@ -27,7 +27,8 @@ public class Product {
     public void setProductName(String productName) {
         this.productName = productName;
     }
-    public String getProductName(){
+
+    public String getProductName() {
         return productName;
     }
 
@@ -54,7 +55,8 @@ public class Product {
     public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
     }
-    public void decreaseProductQuantity(){
+
+    public void decreaseProductQuantity() {
         productQuantity -= 1;
     }
 
