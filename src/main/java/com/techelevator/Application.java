@@ -1,8 +1,12 @@
 package com.techelevator;
 
+import com.techelevator.util.InvalidSlotLocationException;
 import com.techelevator.util.Logger;
+import com.techelevator.vendingmachine.VendingMachine;
 
-import java.io.IOException;
+
+import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Scanner;
 
@@ -14,8 +18,13 @@ public class Application {
         Logger.log("Vending Machine Started");
 
         VendingMachine vendingMachine = new VendingMachine();
-        vendingMachine.loadInventoryFromFile("vendingmachine.csv");
-
+//        ProductInventory productInventory = new ProductInventory();
+        try {
+            VendingMachine.loadInventoryFromFile("vendingmachine.csv");
+        } catch (FileNotFoundException e) {
+            System.err.println("Error: Inventory file not found");
+            return;
+        }
         boolean isShouldExit = false;
         while (!isShouldExit) {
             vendingMachine.displayMainMenu();
@@ -55,7 +64,12 @@ public class Application {
                 case "2":
                     System.out.println("Enter slot location");
                     String productSlot = userInput.nextLine();
-                    vendingMachine.purchaseProduct(productSlot.toUpperCase());
+                    try{
+                        vendingMachine.purchaseProduct(productSlot.toUpperCase());
+                    }catch (InvalidSlotLocationException e){
+                        System.err.println(e.getMessage());
+                    }
+
                     break;
                 case "3":
                     vendingMachine.giveChange();
@@ -75,8 +89,8 @@ public class Application {
 
             try {
                 String value = userInput.nextLine();
-                double amount = Double.parseDouble(value);
-                if (amount < 1.00) {
+                BigDecimal amount = new BigDecimal(value);
+                if (amount.compareTo(new BigDecimal("1.00")) < 0) {
                     System.out.println("Sorry we can only accept whole dollars at this time please insert acceptable amount");
                     continue;
                 }

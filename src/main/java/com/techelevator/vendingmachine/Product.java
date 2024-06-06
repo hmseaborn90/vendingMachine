@@ -1,19 +1,20 @@
-package com.techelevator;
+package com.techelevator.vendingmachine;
+
+import java.math.BigDecimal;
 
 public class Product {
     private String slotLocation;
     private String productName;
-    private double productPrice;
+    private BigDecimal productPrice;
     private String productType;
-    private int productQuantity;
 
 
-    public Product(String slotLocation, String productName, double productPrice, String productType) {
+    public Product(String slotLocation, String productName, BigDecimal productPrice, String productType) {
         this.slotLocation = slotLocation;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productType = productType;
-        this.productQuantity = 5;
+
     }
 
     public String getSlotLocation() {
@@ -32,11 +33,11 @@ public class Product {
         return productName;
     }
 
-    public double getProductPrice() {
+    public BigDecimal getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(BigDecimal productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -48,16 +49,5 @@ public class Product {
         this.productType = productType;
     }
 
-    public int getProductQuantity() {
-        return productQuantity;
-    }
-
-    public void setProductQuantity(int productQuantity) {
-        this.productQuantity = productQuantity;
-    }
-
-    public void decreaseProductQuantity() {
-        productQuantity -= 1;
-    }
 
 }

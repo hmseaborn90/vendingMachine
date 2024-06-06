@@ -65,3 +65,101 @@
 2024/06/04 19:31:52 Triplemint D4 $0.75 $1.25
 2024/06/04 19:31:56 Little League Chew D2 $0.95 $0.30
 2024/06/04 19:31:58 GIVE CHANGE: $0.30 $0.00
+2024/06/05 17:43:24 Vending Machine Started
+2024/06/05 17:43:32 Feed Money: $10.00 $10.00
+2024/06/05 17:43:39 Chiclets D3 $0.75 $9.25
+2024/06/05 17:43:43 Chiclets D3 $0.75 $8.50
+2024/06/05 17:43:46 Chiclets D3 $0.75 $7.75
+2024/06/05 17:43:50 Chiclets D3 $0.75 $7.00
+2024/06/05 17:43:54 Chiclets D3 $0.75 $6.25
+2024/06/05 17:54:59 GIVE CHANGE: $6.25 $0.00
+2024/06/05 21:25:13 Vending Machine Started
+2024/06/05 21:25:20 Feed Money: $10.00 $10.00
+2024/06/05 21:27:14 Vending Machine Started
+2024/06/05 21:27:23 Feed Money: $10.00 $10.00
+2024/06/05 21:28:07 Vending Machine Started
+2024/06/05 21:28:11 Feed Money: $10.00 $10.00
+2024/06/05 21:28:22 Triplemint D4 $0.75 $9.25
+2024/06/05 21:28:30 Triplemint D4 $0.75 $8.50
+2024/06/05 21:28:33 Triplemint D4 $0.75 $7.75
+2024/06/05 21:28:36 Triplemint D4 $0.75 $7.00
+2024/06/05 21:28:41 Triplemint D4 $0.75 $6.25
+2024/06/05 21:31:50 Vending Machine Started
+2024/06/05 21:32:11 Feed Money: $10.00 $10.00
+2024/06/05 21:32:19 Triplemint D4 $0.75 $9.25
+2024/06/05 21:32:22 Triplemint D4 $0.75 $8.50
+2024/06/05 21:32:24 Triplemint D4 $0.75 $7.75
+2024/06/05 21:32:26 Triplemint D4 $0.75 $7.00
+2024/06/05 21:32:30 Triplemint D4 $0.75 $6.25
+2024/06/05 21:32:53 Vending Machine Started
+2024/06/05 21:32:58 Feed Money: $10.00 $10.00
+2024/06/05 21:33:02 Triplemint D4 $0.75 $9.25
+2024/06/05 21:33:05 Triplemint D4 $0.75 $8.50
+2024/06/05 21:33:08 Triplemint D4 $0.75 $7.75
+2024/06/05 21:33:11 Triplemint D4 $0.75 $7.00
+2024/06/05 21:33:14 Triplemint D4 $0.75 $6.25
+2024/06/05 21:34:29 Vending Machine Started
+2024/06/05 21:35:01 Vending Machine Started
+2024/06/05 21:35:06 Feed Money: $10.00 $10.00
+2024/06/05 21:35:13 Triplemint D4 $0.75 $9.25
+2024/06/05 21:36:55 Vending Machine Started
+2024/06/05 21:37:02 Feed Money: $10.00 $10.00
+2024/06/05 21:37:09 Triplemint D4 $0.75 $9.25
+2024/06/05 21:40:51 Vending Machine Started
+2024/06/05 21:40:57 Feed Money: $10.00 $10.00
+2024/06/05 21:41:01 Triplemint D4 $0.75 $9.25
+2024/06/05 21:43:44 Vending Machine Started
+2024/06/05 21:53:25 Vending Machine Started
+2024/06/05 21:55:47 Vending Machine Started
+2024/06/05 21:55:56 Feed Money: $10.00 $10.00
+2024/06/05 21:56:00 Triplemint D4 $0.75 $9.25
+2024/06/05 22:00:24 Vending Machine Started
+2024/06/05 22:00:52 Vending Machine Started
+2024/06/05 22:01:01 Feed Money: $10.00 $10.00
+2024/06/05 22:04:19 Vending Machine Started
+2024/06/05 22:25:36 Vending Machine Started
+2024/06/05 22:25:42 Feed Money: $10.00 $10.00
+2024/06/05 22:25:50 Chiclets D3 $0.75 $9.25
+2024/06/05 22:26:07 Triplemint D4 $0.75 $8.50
+2024/06/05 22:26:13 U-Chews D1 $0.85 $7.65
+2024/06/05 22:26:32 Stackers A2 $1.45 $6.20
+2024/06/05 22:26:44 GIVE CHANGE: $6.20 $0.00
+2024/06/05 22:32:13 Vending Machine Started
+2024/06/05 22:32:34 Vending Machine Started
+2024/06/05 22:32:41 Feed Money: $10.00 $10.00
+2024/06/05 22:32:48 Chiclets D3 $0.75 $9.25
+2024/06/05 22:42:33 Vending Machine Started
+2024/06/05 22:42:51 Feed Money: $20.00 $20.00
+2024/06/05 22:42:59 Triplemint D4 $0.75 $19.25
+2024/06/05 22:43:01 Triplemint D4 $0.75 $18.50
+2024/06/05 22:43:03 Triplemint D4 $0.75 $17.75
+2024/06/05 22:43:06 Triplemint D4 $0.75 $17.00
+2024/06/05 22:43:27 Triplemint D4 $0.75 $16.25
+2024/06/05 22:45:54 Vending Machine Started
+2024/06/05 22:46:32 Feed Money: $2.00 $2.00
+2024/06/05 22:46:39 Triplemint D4 $0.75 $1.25
+2024/06/05 22:46:42 Little League Chew D2 $0.95 $0.30
+2024/06/05 22:46:49 GIVE CHANGE: $0.30 $0.00
+2024/06/05 22:47:15 Feed Money: $1,222.00 $1,222.00
+2024/06/05 22:47:24 Triplemint D4 $0.75 $1,221.25
+2024/06/05 22:47:28 Chiclets D3 $0.75 $1,220.50
+2024/06/05 22:47:30 Chiclets D3 $0.75 $1,219.75
+2024/06/05 22:47:34 Chiclets D3 $0.75 $1,219.00
+2024/06/05 22:47:37 Chiclets D3 $0.75 $1,218.25
+2024/06/05 22:47:43 Chiclets D3 $0.75 $1,217.50
+2024/06/05 22:47:50 Triplemint D4 $0.75 $1,216.75
+2024/06/05 22:47:53 Triplemint D4 $0.75 $1,216.00
+2024/06/05 22:47:56 Triplemint D4 $0.75 $1,215.25
+2024/06/05 22:48:00 U-Chews D1 $0.85 $1,214.40
+2024/06/05 22:48:03 U-Chews D1 $0.85 $1,213.55
+2024/06/05 22:48:05 Stackers A2 $1.45 $1,212.10
+2024/06/05 22:48:08 Mountain Melter C3 $1.50 $1,210.60
+2024/06/05 22:48:12 GIVE CHANGE: $1,210.60 $0.00
+2024/06/05 22:49:52 Vending Machine Started
+2024/06/05 23:22:24 Vending Machine Started
+2024/06/05 23:22:31 Feed Money: $10.00 $10.00
+2024/06/05 23:25:42 Vending Machine Started
+2024/06/05 23:25:55 Vending Machine Started
+2024/06/05 23:26:26 Vending Machine Started
+2024/06/05 23:26:31 Vending Machine Started
+2024/06/05 23:26:40 Feed Money: $10.00 $10.00
