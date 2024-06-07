@@ -18,9 +18,9 @@ public class Application {
         Logger.log("Vending Machine Started");
 
         VendingMachine vendingMachine = new VendingMachine();
-//        ProductInventory productInventory = new ProductInventory();
+
         try {
-            VendingMachine.loadInventoryFromFile("vendingmachine.csv");
+            VendingMachine.loadInventory("vendingmachine.csv");
         } catch (FileNotFoundException e) {
             System.err.println("Error: Inventory file not found");
             return;
@@ -64,9 +64,9 @@ public class Application {
                 case "2":
                     System.out.println("Enter slot location");
                     String productSlot = userInput.nextLine();
-                    try{
+                    try {
                         vendingMachine.purchaseProduct(productSlot.toUpperCase());
-                    }catch (InvalidSlotLocationException e){
+                    } catch (InvalidSlotLocationException e) {
                         System.err.println(e.getMessage());
                     }
 
