@@ -18,14 +18,18 @@ import static com.techelevator.Application.currency;
 public class VendingMachine {
     private BigDecimal totalSales = BigDecimal.ZERO;
     private BigDecimal balance = BigDecimal.ZERO;
-    private Map<String, Integer> productsSold = new HashMap<>();
+//    private Map<String, Integer> productsSold = new HashMap<>();
+    private SalesReport salesReport;
     private ProductInventory productInventory;
     private UserInterface ui;
+    private ChangeDispenser changeDispenser;
 
 
-    public VendingMachine(ProductInventory productInventory) {
+    public VendingMachine(ProductInventory productInventory, Scanner scanner) {
         this.productInventory = productInventory;
-        this.ui = new UserInterface();
+        this.ui = new UserInterface(scanner);
+        this.salesReport = new SalesReport();
+        this.changeDispenser = new ChangeDispenser();
     }
 
     public void purchaseProduct(String slotLocation) throws InvalidSlotLocationException {
@@ -62,7 +66,7 @@ public class VendingMachine {
         purchase(product.getProductPrice());
         totalSales = totalSales.add(product.getProductPrice());
         productInventory.getProductQuantities().put(product.getSlotLocation(), quantity - 1);
-        addToProductsSold(product.getProductName());
+        addToSalesReport(product.getProductName());
         String balanceRemaining = currency.format(balance);
         String logMessage = String.format("%s %s %s",
                 product.getProductName(),
@@ -77,33 +81,16 @@ public class VendingMachine {
     }
 
     public void giveChange() {
-        BigDecimal balanceInCents = balance.multiply(new BigDecimal("100"));
-        BigDecimal quarters = balanceInCents.divide(new BigDecimal("25"), 0, RoundingMode.DOWN);
-        BigDecimal remainder = balanceInCents.remainder(new BigDecimal("25"));
-        BigDecimal dimes = remainder.divide(new BigDecimal("10"), 0, RoundingMode.DOWN);
-        remainder = remainder.remainder(new BigDecimal("10"));
-        BigDecimal nickels = remainder.divide(new BigDecimal("5"), 0, RoundingMode.DOWN);
-
-        System.out.println("Change returned " + currency.format(balance));
-        System.out.println("Quarters: " + quarters);
-        System.out.println("Dimes: " + dimes);
-        System.out.println("Nickels: " + nickels);
-
-        String logMessage = String.format("GIVE CHANGE: %s $0.00", currency.format(balance));
-        Logger.log(logMessage);
-
-        balance = BigDecimal.ZERO;
+        changeDispenser.giveChange(balance);
+        setBalance(BigDecimal.ZERO);
     }
 
-    private void addToProductsSold(String name) {
-        productsSold.put(name, productsSold.getOrDefault(name, 0) + 1);
+    private void addToSalesReport(String name) {
+        salesReport.addToSalesReport(name);
     }
 
     public void getSalesReport() {
-        for (Map.Entry<String, Integer> entry : productsSold.entrySet()) {
-            System.out.println(entry.getKey() + "|" + entry.getValue());
-        }
-        System.out.println("**TOTAL SALES** " + currency.format(totalSales));
+        salesReport.getSalesReport(totalSales);
     }
 
     public void loadInventory(String filePath) throws FileNotFoundException {
@@ -126,12 +113,22 @@ public class VendingMachine {
     public void displayMainMenu() {
         ui.displayMainMenu();
     }
-    public String promptForSlotLocation(){
+
+    public void displayMessage(String message) {
+        ui.displayMessage(message);
+
+    }
+    public void displayCurrentBalance(){
+        ui.displayCurrentBalance(balance);
+    }
+    public BigDecimal promptForMoney() {
+        return ui.promptForMoney();
+    }
+
+    public String promptForSlotLocation() {
         return ui.promptForSlotSelection();
     }
-    public void displayMessage(String message){
-        ui.displayMessage(message);
-    }
+
 
     public BigDecimal getBalance() {
         return balance;
@@ -151,52 +148,3 @@ public class VendingMachine {
     }
 }
 
-//    public static void loadInventoryFromFile(String filePath) throws FileNotFoundException {
-//        File csvFile = new File(filePath);
-//        try (Scanner fileInput = new Scanner(csvFile)) {
-//            while (fileInput.hasNextLine()) {
-//                String[] productData = fileInput.nextLine().split("\\|");
-//                String productSlotNumber = productData[0];
-//                String productName = productData[1];
-//                try {
-//                    BigDecimal productPrice = new BigDecimal(productData[2]);
-//                    String productType = productData[3];
-//                    int productQuantity = 5;
-//                    if (productType.equalsIgnoreCase("Chip")) {
-//                        products.put(productSlotNumber, new Chip(productSlotNumber, productName, productPrice, productType));
-//                    }
-//                    if (productType.equalsIgnoreCase("Candy")) {
-//                        products.put(productSlotNumber, new Candy(productSlotNumber, productName, productPrice, productType));
-//                    }
-//                    if (productType.equalsIgnoreCase("Drink")) {
-//                        products.put(productSlotNumber, new Candy.Drink(productSlotNumber, productName, productPrice, productType));
-//                    }
-//                    if (productType.equalsIgnoreCase("Gum")) {
-//                        products.put(productSlotNumber, new Gum(productSlotNumber, productName, productPrice, productType));
-//                    }
-//                    productQuantities.put(productSlotNumber, productQuantity);
-//                } catch (NumberFormatException e) {
-//                    System.err.println("Error parsing product price for: " + productName);
-//                }
-//
-//            }
-//        } catch (FileNotFoundException e) {
-//            System.err.println("The file was not found " + csvFile.getAbsolutePath());
-//        } catch (Exception e) {
-//            System.err.println("An error occurred while loading inventory from file: " + e.getMessage());
-//        }
-//
-//    }
-
-//    public void displayInventory() {
-//        for (Map.Entry<String, Product> entry : products.entrySet()) {
-//            String slotLocation = entry.getKey();
-//            Product product = entry.getValue();
-//            int quantity = productQuantities.getOrDefault(slotLocation, 0);
-//            if (quantity == 0) {
-//                System.out.println(slotLocation + " | " + "Sold Out");
-//            } else {
-//                System.out.println(slotLocation + " | " + product.getProductName() + " | " + currency.format(product.getProductPrice()));
-//            }
-//        }
-//    }

@@ -7,8 +7,8 @@ import static com.techelevator.Application.currency;
 public class UserInterface {
     private Scanner scanner;
 
-    public UserInterface() {
-        scanner = new Scanner(System.in);
+    public UserInterface(Scanner scanner) {
+        this.scanner = scanner;
     }
     public void displayMainMenu() {
         System.out.println("(1) Display Vending Machine Items");
@@ -28,6 +28,10 @@ public class UserInterface {
         BigDecimal amount = scanner.nextBigDecimal();
         scanner.nextLine();
         return amount;
+    }
+
+    public void displayCurrentBalance(BigDecimal balance){
+        System.out.println("\nCurrent Balance: " + currency.format(balance));
     }
 
     public String promptForSlotSelection() {

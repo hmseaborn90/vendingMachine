@@ -18,7 +18,7 @@ public class Application {
     public static void main(String[] args) {
         Logger.log("Vending Machine Started");
         ProductInventory productInventory = new ProductInventory();
-        VendingMachine vendingMachine = new VendingMachine(productInventory);
+        VendingMachine vendingMachine = new VendingMachine(productInventory, userInput);
 
         try {
             vendingMachine.loadInventory("vendingmachine.csv");
@@ -85,18 +85,17 @@ public class Application {
 
     private static void handleMoneyInput(VendingMachine vendingMachine) {
         while (true) {
-            System.out.println("Feed money");
-            System.out.println("Insert money amount");
 
             try {
-                String value = userInput.nextLine();
-                BigDecimal amount = new BigDecimal(value);
+                BigDecimal amount = vendingMachine.promptForMoney();
+
                 if (amount.compareTo(new BigDecimal("1.00")) < 0) {
                     System.err.println("Sorry we can only accept whole dollars at this time please insert acceptable amount");
                     continue;
                 }
                 vendingMachine.feedMoney(amount);
-                System.out.println("Current Money Provided: " + currency.format(vendingMachine.getBalance()));
+                vendingMachine.displayCurrentBalance();
+
                 String logMessage = String.format("Feed Money: %s %s", currency.format(amount), currency.format(vendingMachine.getBalance()));
                 Logger.log(logMessage);
             } catch (NumberFormatException e) {

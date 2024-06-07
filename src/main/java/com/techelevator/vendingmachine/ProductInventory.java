@@ -13,7 +13,10 @@ import static com.techelevator.Application.currency;
 public class ProductInventory {
     private Map<String, Product> products;
     private Map<String, Integer> productQuantities;
-
+    public ProductInventory() {
+        this.products = new TreeMap<>();
+        this.productQuantities = new HashMap<>();
+    }
 
     public void loadInventoryFromFile(String filePath) throws FileNotFoundException {
         File csvFile = new File(filePath);
@@ -79,8 +82,5 @@ public class ProductInventory {
         this.productQuantities = productQuantities;
     }
 
-    public ProductInventory() {
-        this.products = new TreeMap<>();
-        this.productQuantities = new HashMap<>();
-    }
+
 }
