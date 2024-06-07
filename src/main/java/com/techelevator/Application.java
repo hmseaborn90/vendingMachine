@@ -2,6 +2,7 @@ package com.techelevator;
 
 import com.techelevator.util.InvalidSlotLocationException;
 import com.techelevator.util.Logger;
+import com.techelevator.vendingmachine.ProductInventory;
 import com.techelevator.vendingmachine.VendingMachine;
 
 
@@ -16,11 +17,11 @@ public class Application {
 
     public static void main(String[] args) {
         Logger.log("Vending Machine Started");
-
-        VendingMachine vendingMachine = new VendingMachine();
+        ProductInventory productInventory = new ProductInventory();
+        VendingMachine vendingMachine = new VendingMachine(productInventory);
 
         try {
-            VendingMachine.loadInventory("vendingmachine.csv");
+            vendingMachine.loadInventory("vendingmachine.csv");
         } catch (FileNotFoundException e) {
             System.err.println("Error: Inventory file not found");
             return;
@@ -37,7 +38,7 @@ public class Application {
                     handlePurchaseMenu(vendingMachine);
                     break;
                 case "3":
-                    System.out.println("Goodbye");
+                    vendingMachine.displayMessage("Goodbye");
                     isShouldExit = true;
                     break;
                 case "4":
@@ -62,8 +63,8 @@ public class Application {
                     handleMoneyInput(vendingMachine);
                     break;
                 case "2":
-                    System.out.println("Enter slot location");
-                    String productSlot = userInput.nextLine();
+
+                    String productSlot = vendingMachine.promptForSlotLocation();
                     try {
                         vendingMachine.purchaseProduct(productSlot.toUpperCase());
                     } catch (InvalidSlotLocationException e) {
@@ -76,7 +77,7 @@ public class Application {
                     isFinished = true;
                     break;
                 default:
-                    System.out.println("Invalid choice please try again");
+                    System.err.println("Invalid choice please try again");
                     break;
             }
         }
@@ -91,7 +92,7 @@ public class Application {
                 String value = userInput.nextLine();
                 BigDecimal amount = new BigDecimal(value);
                 if (amount.compareTo(new BigDecimal("1.00")) < 0) {
-                    System.out.println("Sorry we can only accept whole dollars at this time please insert acceptable amount");
+                    System.err.println("Sorry we can only accept whole dollars at this time please insert acceptable amount");
                     continue;
                 }
                 vendingMachine.feedMoney(amount);

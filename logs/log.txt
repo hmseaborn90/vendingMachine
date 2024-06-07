@@ -186,3 +186,23 @@
 2024/06/06 18:57:27 Triplemint D4 $0.75 $7.75
 2024/06/06 18:57:29 Triplemint D4 $0.75 $7.00
 2024/06/06 18:57:32 Triplemint D4 $0.75 $6.25
+2024/06/06 19:17:33 Vending Machine Started
+2024/06/06 19:17:41 Feed Money: $10.00 $10.00
+2024/06/06 19:17:47 U-Chews D1 $0.85 $9.15
+2024/06/06 19:17:49 Triplemint D4 $0.75 $8.40
+2024/06/06 19:17:52 Little League Chew D2 $0.95 $7.45
+2024/06/06 19:18:02 GIVE CHANGE: $7.45 $0.00
+2024/06/06 19:29:37 Vending Machine Started
+2024/06/06 19:29:57 Vending Machine Started
+2024/06/06 19:36:12 Vending Machine Started
+2024/06/06 19:36:23 Feed Money: $10.00 $10.00
+2024/06/06 19:36:36 Triplemint D4 $0.75 $9.25
+2024/06/06 19:38:49 Vending Machine Started
+2024/06/06 19:40:17 Vending Machine Started
+2024/06/06 19:40:33 Feed Money: $10.00 $10.00
+2024/06/06 19:41:01 GIVE CHANGE: $10.00 $0.00
+2024/06/06 19:41:12 Feed Money: $10.00 $10.00
+2024/06/06 19:41:16 Triplemint D4 $0.75 $9.25
+2024/06/06 19:41:22 U-Chews D1 $0.85 $8.40
+2024/06/06 19:41:25 Mountain Melter C3 $1.50 $6.90
+2024/06/06 19:41:28 GIVE CHANGE: $6.90 $0.00

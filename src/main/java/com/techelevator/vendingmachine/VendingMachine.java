@@ -4,11 +4,13 @@ import com.techelevator.util.BalanceInsufficientException;
 import com.techelevator.util.InvalidSlotLocationException;
 import com.techelevator.util.Logger;
 import com.techelevator.util.ProductOutOfStockException;
+
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 
 import static com.techelevator.Application.currency;
@@ -17,8 +19,14 @@ public class VendingMachine {
     private BigDecimal totalSales = BigDecimal.ZERO;
     private BigDecimal balance = BigDecimal.ZERO;
     private Map<String, Integer> productsSold = new HashMap<>();
-    static ProductInventory productInventory = new ProductInventory();
+    private ProductInventory productInventory;
+    private UserInterface ui;
 
+
+    public VendingMachine(ProductInventory productInventory) {
+        this.productInventory = productInventory;
+        this.ui = new UserInterface();
+    }
 
     public void purchaseProduct(String slotLocation) throws InvalidSlotLocationException {
         Product product = productInventory.getProducts().get(slotLocation);
@@ -97,30 +105,32 @@ public class VendingMachine {
         }
         System.out.println("**TOTAL SALES** " + currency.format(totalSales));
     }
-    public static void loadInventory(String filePath) throws FileNotFoundException {
-        try{
+
+    public void loadInventory(String filePath) throws FileNotFoundException {
+        try {
             productInventory.loadInventoryFromFile(filePath);
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.err.println(e.getMessage());
         }
 
     }
-    public static void displayInventory(){
+
+    public void displayInventory() {
         productInventory.displayInventory();
     }
+
     public void displayPurchaseMenu() {
-        System.out.println(
-                "Current Money Provided: " + currency.format(balance) + "\n" +
-                        "    > (1) FeedMoney\n" +
-                        "    > (2) Select Product\n" +
-                        "    > (3) Finish Transaction");
+        ui.displayPurchaseMenu(balance);
     }
 
     public void displayMainMenu() {
-        System.out.println(
-                "    > (1) Display Vending Machine Items\n" +
-                        "    > (2) Purchase\n" +
-                        "    > (3) Exit");
+        ui.displayMainMenu();
+    }
+    public String promptForSlotLocation(){
+        return ui.promptForSlotSelection();
+    }
+    public void displayMessage(String message){
+        ui.displayMessage(message);
     }
 
     public BigDecimal getBalance() {
