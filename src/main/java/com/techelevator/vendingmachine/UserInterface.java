@@ -1,6 +1,6 @@
 package com.techelevator.vendingmachine;
 import java.math.BigDecimal;
-import java.util.Scanner;
+import java.util.*;
 
 import static com.techelevator.Application.currency;
 
@@ -10,10 +10,11 @@ public class UserInterface {
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
     }
-    public void displayMainMenu() {
+    public String displayMainMenu() {
         System.out.println("(1) Display Vending Machine Items");
         System.out.println("(2) Purchase");
         System.out.println("(3) Exit");
+        return scanner.nextLine();
     }
 
     public void displayPurchaseMenu(BigDecimal balance) {
@@ -37,6 +38,20 @@ public class UserInterface {
     public String promptForSlotSelection() {
         System.out.print("Enter the slot number: ");
         return scanner.nextLine().toUpperCase();
+    }
+    public void displayInventory(Map<Product, Integer> products) {
+        List<Map.Entry<Product, Integer>> sortedEntries = new ArrayList<>(products.entrySet());
+        sortedEntries.sort(Comparator.comparing(entry -> entry.getKey().getSlotLocation()));
+        for (Map.Entry<Product, Integer> entry : sortedEntries) {
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+
+            if (quantity == 0) {
+                System.out.println(product.getSlotLocation()+ " | " + product.getProductName() + " | " + "Sold Out");
+            } else {
+                System.out.println(product.getSlotLocation() + " | " + product.getProductName() + " | " + currency.format(product.getProductPrice()) + "| Items left: " + quantity );
+            }
+        }
     }
 
     public void displayMessage(String message) {

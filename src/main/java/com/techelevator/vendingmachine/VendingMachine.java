@@ -7,49 +7,42 @@ import com.techelevator.util.ProductOutOfStockException;
 
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 
 import static com.techelevator.Application.currency;
 
 public class VendingMachine {
-    private BigDecimal totalSales = BigDecimal.ZERO;
     private BigDecimal balance = BigDecimal.ZERO;
-//    private Map<String, Integer> productsSold = new HashMap<>();
     private SalesReport salesReport;
     private ProductInventory productInventory;
     private UserInterface ui;
     private ChangeDispenser changeDispenser;
 
 
-    public VendingMachine(ProductInventory productInventory, Scanner scanner) {
-        this.productInventory = productInventory;
+    public VendingMachine(Scanner scanner) {
+        this.productInventory = new ProductInventory();
         this.ui = new UserInterface(scanner);
         this.salesReport = new SalesReport();
         this.changeDispenser = new ChangeDispenser();
     }
 
-    public void purchaseProduct(String slotLocation) throws InvalidSlotLocationException {
-        Product product = productInventory.getProducts().get(slotLocation);
-
-        if (product == null) {
-            throw new InvalidSlotLocationException("Invalid Slot location enter valid slot location");
-        }
+    public void purchaseProduct(String slotLocation)  {
+        Product product = productInventory.getProductBySlot(slotLocation);
         try {
             if (isPurchaseValid(product)) {
                 performPurchase(product);
             }
-        } catch (ProductOutOfStockException | BalanceInsufficientException e) {
+        } catch (ProductOutOfStockException | BalanceInsufficientException | InvalidSlotLocationException e) {
             System.err.println(e.getMessage());
         }
-
     }
 
-    private boolean isPurchaseValid(Product product) throws ProductOutOfStockException, BalanceInsufficientException {
-        int quantity = productInventory.getProductQuantities().getOrDefault(product.getSlotLocation(), 0);
+    private boolean isPurchaseValid(Product product) throws ProductOutOfStockException, BalanceInsufficientException, InvalidSlotLocationException {
+        if(product == null){
+            throw new InvalidSlotLocationException("Invalid slot location. Please select a valid slot");
+        }
+        int quantity = productInventory.getProducts().getOrDefault(product, 0);
 
         if (quantity == 0) {
             throw new ProductOutOfStockException("Sorry, this item is currently sold out. Please make another selection.");
@@ -62,11 +55,10 @@ public class VendingMachine {
     }
 
     private void performPurchase(Product product) {
-        int quantity = productInventory.getProductQuantities().getOrDefault(product.getSlotLocation(), 0);
-        purchase(product.getProductPrice());
-        totalSales = totalSales.add(product.getProductPrice());
-        productInventory.getProductQuantities().put(product.getSlotLocation(), quantity - 1);
-        addToSalesReport(product.getProductName());
+        int quantity = productInventory.getProducts().getOrDefault(product, 0);
+        balance = balance.subtract(product.getProductPrice());
+        productInventory.getProducts().put(product, quantity - 1);
+        addToSalesReport(product.getProductName(), product.getProductPrice());
         String balanceRemaining = currency.format(balance);
         String logMessage = String.format("%s %s %s",
                 product.getProductName(),
@@ -81,16 +73,16 @@ public class VendingMachine {
     }
 
     public void giveChange() {
-        changeDispenser.giveChange(balance);
+        ui.displayMessage(changeDispenser.giveChange(balance));
         setBalance(BigDecimal.ZERO);
     }
 
-    private void addToSalesReport(String name) {
-        salesReport.addToSalesReport(name);
+    private void addToSalesReport(String name, BigDecimal price) {
+        salesReport.addToSalesReport(name, price);
     }
 
     public void getSalesReport() {
-        salesReport.getSalesReport(totalSales);
+        salesReport.getSalesReport();
     }
 
     public void loadInventory(String filePath) throws FileNotFoundException {
@@ -103,15 +95,15 @@ public class VendingMachine {
     }
 
     public void displayInventory() {
-        productInventory.displayInventory();
+        ui.displayInventory(productInventory.getProducts());
     }
 
     public void displayPurchaseMenu() {
         ui.displayPurchaseMenu(balance);
     }
 
-    public void displayMainMenu() {
-        ui.displayMainMenu();
+    public String displayMainMenu() {
+        return ui.displayMainMenu();
     }
 
     public void displayMessage(String message) {
@@ -141,10 +133,10 @@ public class VendingMachine {
     public void feedMoney(BigDecimal amountFed) {
         balance = balance.add(amountFed);
     }
+//    public boolean isSlotValid(String slot){
+//       Product product = productInventory.getProductBySlot(slot);
+//        return product == null;
+//    }
 
-    public void purchase(BigDecimal amountToWithdraw) {
-        balance = balance.subtract(amountToWithdraw);
-        totalSales = totalSales.add(amountToWithdraw);
-    }
 }
 

@@ -239,3 +239,111 @@
 2024/06/07 14:51:48 Little League Chew D2 $0.95 $9.05
 2024/06/07 14:51:52 GIVE CHANGE: $9.05 $0.00
 2024/06/07 14:52:01 GIVE CHANGE: $0.00 $0.00
+2024/06/07 14:59:29 Vending Machine Started
+2024/06/07 15:33:34 Vending Machine Started
+2024/06/07 15:35:04 Vending Machine Started
+2024/06/07 15:35:22 Feed Money: $10.00 $10.00
+2024/06/07 15:35:58 Chiclets D3 $0.75 $9.25
+2024/06/07 15:36:00 Chiclets D3 $0.75 $8.50
+2024/06/07 15:36:06 Chiclets D3 $0.75 $7.75
+2024/06/07 15:36:08 Chiclets D3 $0.75 $7.00
+2024/06/07 15:36:13 Chiclets D3 $0.75 $6.25
+2024/06/07 15:36:26 GIVE CHANGE: $6.25 $0.00
+2024/06/07 16:56:05 Vending Machine Started
+2024/06/07 16:56:21 Feed Money: $10.00 $10.00
+2024/06/07 16:58:00 Vending Machine Started
+2024/06/07 16:58:05 Feed Money: $10.00 $10.00
+2024/06/07 16:58:12 Little League Chew D2 $0.95 $9.05
+2024/06/07 16:58:30 GIVE CHANGE: $9.05 $0.00
+2024/06/07 16:58:36 Feed Money: $10.00 $10.00
+2024/06/07 16:58:40 U-Chews D1 $0.85 $9.15
+2024/06/07 16:58:48 U-Chews D1 $0.85 $8.30
+2024/06/07 17:13:02 Vending Machine Started
+2024/06/07 17:27:29 Vending Machine Started
+2024/06/07 17:27:45 Feed Money: $10.00 $10.00
+2024/06/07 17:30:30 Vending Machine Started
+2024/06/07 17:34:42 Vending Machine Started
+2024/06/07 17:35:36 GIVE CHANGE: $0.00 $0.00
+2024/06/07 17:35:48 Feed Money: $10.00 $10.00
+2024/06/07 17:35:54 U-Chews D1 $0.85 $9.15
+2024/06/07 17:37:19 Vending Machine Started
+2024/06/07 17:38:21 Vending Machine Started
+2024/06/07 17:39:38 Vending Machine Started
+2024/06/07 17:39:56 Vending Machine Started
+2024/06/07 17:40:38 Vending Machine Started
+2024/06/07 17:40:53 Vending Machine Started
+2024/06/07 17:43:21 Vending Machine Started
+2024/06/07 17:44:28 Vending Machine Started
+2024/06/07 17:45:18 Vending Machine Started
+2024/06/07 17:46:36 Vending Machine Started
+2024/06/07 17:47:22 Vending Machine Started
+2024/06/07 17:50:43 Vending Machine Started
+2024/06/07 17:51:02 Vending Machine Started
+2024/06/07 17:51:45 Vending Machine Started
+2024/06/07 17:52:01 Vending Machine Started
+2024/06/07 17:53:11 Vending Machine Started
+2024/06/07 17:54:52 Vending Machine Started
+2024/06/07 17:55:16 Vending Machine Started
+2024/06/07 17:55:34 Vending Machine Started
+2024/06/07 17:58:18 Vending Machine Started
+2024/06/07 18:03:01 Vending Machine Started
+2024/06/07 18:03:49 Vending Machine Started
+2024/06/07 18:04:12 Vending Machine Started
+2024/06/07 18:04:44 Vending Machine Started
+2024/06/07 18:05:13 Vending Machine Started
+2024/06/07 18:05:17 Vending Machine Started
+2024/06/07 18:08:21 Vending Machine Started
+2024/06/07 18:08:29 Vending Machine Started
+2024/06/07 18:08:38 Feed Money: $10.00 $10.00
+2024/06/07 18:08:45 Chiclets D3 $0.75 $9.25
+2024/06/07 18:09:01 U-Chews D1 $0.85 $8.40
+2024/06/07 18:09:07 Chiclets D3 $0.75 $7.65
+2024/06/07 18:09:14 Chiclets D3 $0.75 $6.90
+2024/06/07 18:09:17 Chiclets D3 $0.75 $6.15
+2024/06/07 18:09:20 Chiclets D3 $0.75 $5.40
+2024/06/07 18:10:06 Vending Machine Started
+2024/06/07 18:10:18 Feed Money: $10.00 $10.00
+2024/06/07 18:10:39 U-Chews D1 $0.85 $9.15
+2024/06/07 18:10:41 U-Chews D1 $0.85 $8.30
+2024/06/07 18:10:44 U-Chews D1 $0.85 $7.45
+2024/06/07 18:10:48 U-Chews D1 $0.85 $6.60
+2024/06/07 18:10:53 U-Chews D1 $0.85 $5.75
+2024/06/07 18:11:25 GIVE CHANGE: $5.75 $0.00
+2024/06/07 20:25:56 Vending Machine Started
+2024/06/07 20:29:13 Vending Machine Started
+2024/06/07 20:31:01 Vending Machine Started
+2024/06/07 20:31:16 Feed Money: $10.00 $10.00
+2024/06/07 20:31:21 Chiclets D3 $0.75 $9.25
+2024/06/07 20:56:02 Vending Machine Started
+2024/06/07 20:56:11 Feed Money: $10.00 $10.00
+2024/06/07 20:56:17 Chiclets D3 $0.75 $9.25
+2024/06/07 20:56:20 U-Chews D1 $0.85 $8.40
+2024/06/07 20:56:22 GIVE CHANGE: $8.40 $0.00
+2024/06/07 20:58:52 Vending Machine Started
+2024/06/07 21:09:27 Vending Machine Started
+2024/06/07 21:09:31 Feed Money: $10.00 $10.00
+2024/06/07 21:09:37 Chiclets D3 $0.75 $9.25
+2024/06/07 21:09:41 Mountain Melter C3 $1.50 $7.75
+2024/06/07 21:10:58 Vending Machine Started
+2024/06/07 21:11:02 Feed Money: $10.00 $10.00
+2024/06/07 21:11:05 Chiclets D3 $0.75 $9.25
+2024/06/07 21:11:08 Triplemint D4 $0.75 $8.50
+2024/06/07 21:11:10 GIVE CHANGE: $8.50 $0.00
+2024/06/07 21:35:33 Vending Machine Started
+2024/06/07 21:38:29 Vending Machine Started
+2024/06/07 21:38:49 Vending Machine Started
+2024/06/07 21:38:53 Vending Machine Started
+2024/06/07 21:39:25 Vending Machine Started
+2024/06/07 21:40:49 Vending Machine Started
+2024/06/07 21:40:59 Vending Machine Started
+2024/06/07 21:41:27 Vending Machine Started
+2024/06/07 21:41:43 Vending Machine Started
+2024/06/07 21:45:14 Vending Machine Started
+2024/06/07 21:45:41 Vending Machine Started
+2024/06/07 21:47:32 Vending Machine Started
+2024/06/07 21:49:34 Vending Machine Started
+2024/06/07 21:50:05 Vending Machine Started
+2024/06/07 21:50:45 Vending Machine Started
+2024/06/07 21:57:43 Vending Machine Started
+2024/06/07 21:58:16 Vending Machine Started
+2024/06/07 21:59:17 Vending Machine Started

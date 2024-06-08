@@ -2,7 +2,6 @@ package com.techelevator;
 
 import com.techelevator.util.InvalidSlotLocationException;
 import com.techelevator.util.Logger;
-import com.techelevator.vendingmachine.ProductInventory;
 import com.techelevator.vendingmachine.VendingMachine;
 
 
@@ -17,8 +16,7 @@ public class Application {
 
     public static void main(String[] args) {
         Logger.log("Vending Machine Started");
-        ProductInventory productInventory = new ProductInventory();
-        VendingMachine vendingMachine = new VendingMachine(productInventory, userInput);
+        VendingMachine vendingMachine = new VendingMachine(userInput);
 
         try {
             vendingMachine.loadInventory("vendingmachine.csv");
@@ -28,8 +26,8 @@ public class Application {
         }
         boolean isShouldExit = false;
         while (!isShouldExit) {
-            vendingMachine.displayMainMenu();
-            String userChoice = userInput.nextLine();
+
+            String userChoice = vendingMachine.displayMainMenu();
             switch (userChoice) {
                 case "1":
                     vendingMachine.displayInventory();
@@ -48,7 +46,9 @@ public class Application {
                     System.out.println("Invalid selection please try again");
             }
         }
+        userInput.close();
     }
+
 
     private static void handlePurchaseMenu(VendingMachine vendingMachine) {
 
@@ -63,14 +63,15 @@ public class Application {
                     handleMoneyInput(vendingMachine);
                     break;
                 case "2":
-
+//                    String productSlot = vendingMachine.promptForSlotLocation();
+//                    if (isValidSlot(vendingMachine, productSlot)) {
+//                        vendingMachine.purchaseProduct(productSlot);
+//                    } else {
+//                        System.err.println("Invalid slot location. Please try again.");
+//                    }
+//                    break;
                     String productSlot = vendingMachine.promptForSlotLocation();
-                    try {
-                        vendingMachine.purchaseProduct(productSlot.toUpperCase());
-                    } catch (InvalidSlotLocationException e) {
-                        System.err.println(e.getMessage());
-                    }
-
+                    vendingMachine.purchaseProduct(productSlot);
                     break;
                 case "3":
                     vendingMachine.giveChange();
@@ -83,6 +84,9 @@ public class Application {
         }
     }
 
+//    private static boolean isValidSlot(VendingMachine vendingMachine, String slot) {
+//        return vendingMachine.isSlotValid(slot);
+//    }
     private static void handleMoneyInput(VendingMachine vendingMachine) {
         while (true) {
 
@@ -109,4 +113,5 @@ public class Application {
             }
         }
     }
+
 }

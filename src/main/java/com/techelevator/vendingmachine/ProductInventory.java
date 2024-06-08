@@ -1,5 +1,7 @@
 package com.techelevator.vendingmachine;
 
+import com.techelevator.util.InvalidSlotLocationException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
@@ -11,11 +13,11 @@ import java.util.TreeMap;
 import static com.techelevator.Application.currency;
 
 public class ProductInventory {
-    private Map<String, Product> products;
-    private Map<String, Integer> productQuantities;
+//    private Map<String, Product> products;
+    private Map<Product, Integer> products;
     public ProductInventory() {
-        this.products = new TreeMap<>();
-        this.productQuantities = new HashMap<>();
+        this.products = new HashMap<>();
+
     }
 
     public void loadInventoryFromFile(String filePath) throws FileNotFoundException {
@@ -35,13 +37,13 @@ public class ProductInventory {
                     } else if (productType.equalsIgnoreCase("Candy")) {
                         product = new Candy(productSlotNumber, productName, productPrice, productType);
                     } else if (productType.equalsIgnoreCase("Drink")) {
-                        product = new Candy.Drink(productSlotNumber, productName, productPrice, productType);
+                        product = new Drink(productSlotNumber, productName, productPrice, productType);
                     } else if (productType.equalsIgnoreCase("Gum")) {
                         product = new Gum(productSlotNumber, productName, productPrice, productType);
                     }
                     if (product != null) {
-                        products.put(productSlotNumber, product);
-                        productQuantities.put(productSlotNumber, productQuantity);
+                        products.put(product, productQuantity);
+
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("Error parsing product price for: " + productName);
@@ -54,33 +56,36 @@ public class ProductInventory {
         }
     }
 
-    public void displayInventory() {
-        for (Map.Entry<String, Product> entry : products.entrySet()) {
-            String slotLocation = entry.getKey();
-            Product product = entry.getValue();
-            int quantity = productQuantities.getOrDefault(slotLocation, 0);
-            if (quantity == 0) {
-                System.out.println(slotLocation + " | " + "Sold Out");
-            } else {
-                System.out.println(slotLocation + " | " + product.getProductName() + " | " + currency.format(product.getProductPrice()));
+
+    public Product getProductBySlot(String slotLocation) throws InvalidSlotLocationException {
+        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
+            Product product = entry.getKey();
+                if (product.getSlotLocation().equalsIgnoreCase(slotLocation)) {
+                    return product;
+                }
             }
-        }
+        return null;
     }
-    public Map<String, Product> getProducts() {
+    public Map<Product, Integer> getProducts() {
         return products;
     }
 
-    public void setProducts(Map<String, Product> products) {
-        this.products = products;
-    }
+// public Product getProductBySlot(String slotLocation){
+//        Product productChosen = null;
+//     for (Map.Entry<Product, Integer> entry : products.entrySet()){
+//         Product product = entry.getKey();
+//         try{
+//             if(product.getSlotLocation().equalsIgnoreCase(slotLocation)){
+//                 productChosen = product;
+//             }
+//         }catch (InvalidSlotLocationException e){
+//             throw new InvalidSlotLocationException("Invalid Slot location enter valid slot location");
+//         }
+//     }
+//        return productChosen;
+// }
 
-    public Map<String, Integer> getProductQuantities() {
-        return productQuantities;
-    }
 
-    public void setProductQuantities(Map<String, Integer> productQuantities) {
-        this.productQuantities = productQuantities;
-    }
 
 
 }
