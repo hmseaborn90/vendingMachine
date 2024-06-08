@@ -1,6 +1,6 @@
 package com.techelevator.vendingmachine;
 
-import com.techelevator.util.InvalidSlotLocationException;
+import com.techelevator.exceptions.InvalidSlotLocationException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,9 +8,6 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
-
-import static com.techelevator.Application.currency;
 
 public class ProductInventory {
     //    private Map<String, Product> products;

@@ -1,16 +1,8 @@
 package com.techelevator.vendingmachine;
 
-import com.techelevator.util.BalanceInsufficientException;
-import com.techelevator.util.InvalidSlotLocationException;
-import com.techelevator.util.Logger;
-import com.techelevator.util.ProductOutOfStockException;
-
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.Scanner;
-
-
-import static com.techelevator.Application.currency;
 
 public class VendingMachine {
     private BigDecimal balance = BigDecimal.ZERO;
@@ -28,18 +20,14 @@ public class VendingMachine {
         this.changeDispenser = new ChangeDispenser();
         this.purchaseManager = new PurchaseManager(salesReport);
     }
+
     public void purchaseProduct(String slotLocation) {
-        try {
-            if (!isSlotValid(slotLocation)) {
-                throw new InvalidSlotLocationException("Invalid slot location. Please select a valid slot");
-            }
-            Product product = productInventory.getProductBySlot(slotLocation);
-            BigDecimal updatedBalance = purchaseManager.purchaseProduct(product, balance, productInventory);
-            setBalance(updatedBalance);
-        } catch (InvalidSlotLocationException e) {
-            System.err.println(e.getMessage());
-        }
+        Product product = productInventory.getProductBySlot(slotLocation);
+        BigDecimal updatedBalance = purchaseManager.purchaseProduct(product, balance, productInventory);
+        setBalance(updatedBalance);
+
     }
+
     public void giveChange() {
         ui.displayMessage(changeDispenser.giveChange(balance));
         setBalance(BigDecimal.ZERO);
@@ -78,9 +66,11 @@ public class VendingMachine {
         ui.displayMessage(message);
 
     }
-    public void displayCurrentBalance(){
+
+    public void displayCurrentBalance() {
         ui.displayCurrentBalance(balance);
     }
+
     public BigDecimal promptForMoney() {
         return ui.promptForMoney();
     }
@@ -101,10 +91,11 @@ public class VendingMachine {
     public void feedMoney(BigDecimal amountFed) {
         balance = balance.add(amountFed);
     }
-    public boolean isSlotValid(String slot){
-       Product product = productInventory.getProductBySlot(slot);
-        return product != null;
-    }
+
+//    public boolean isSlotValid(String slot) {
+//        Product product = productInventory.getProductBySlot(slot);
+//        return product != null;
+//    }
 
 }
 

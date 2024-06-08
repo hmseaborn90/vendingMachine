@@ -1,9 +1,9 @@
 package com.techelevator.vendingmachine;
 
-import com.techelevator.util.BalanceInsufficientException;
-import com.techelevator.util.InvalidSlotLocationException;
+import com.techelevator.exceptions.BalanceInsufficientException;
+import com.techelevator.exceptions.InvalidSlotLocationException;
 import com.techelevator.util.Logger;
-import com.techelevator.util.ProductOutOfStockException;
+import com.techelevator.exceptions.ProductOutOfStockException;
 
 import java.math.BigDecimal;
 
@@ -15,25 +15,27 @@ public class PurchaseManager {
     private BigDecimal balance;
     private SalesReport salesReport;
 
-    public PurchaseManager(SalesReport salesReport){
+    public PurchaseManager(SalesReport salesReport) {
         this.salesReport = salesReport;
     }
 
     public BigDecimal purchaseProduct(Product product, BigDecimal balance, ProductInventory productInventory) {
-//        Product product = productInventory.getProductBySlot(slotLocation);
         BigDecimal updatedBalance = null;
         try {
             if (isPurchaseValid(product, balance, productInventory)) {
                 updatedBalance = performPurchase(product, balance, productInventory);
             }
-        } catch (ProductOutOfStockException | BalanceInsufficientException | InvalidSlotLocationException e) {
+        } catch (ProductOutOfStockException | BalanceInsufficientException e) {
             System.err.println(e.getMessage());
+        } catch (InvalidSlotLocationException e) {
+            System.err.println(e.getMessage());
+            return balance;
         }
         return updatedBalance;
     }
 
     public boolean isPurchaseValid(Product product, BigDecimal balance, ProductInventory productInventory) throws ProductOutOfStockException, BalanceInsufficientException, InvalidSlotLocationException {
-        if(product == null){
+        if (product == null) {
             throw new InvalidSlotLocationException("Invalid slot location. Please select a valid slot");
         }
         int quantity = productInventory.getProducts().getOrDefault(product, 0);
@@ -48,7 +50,7 @@ public class PurchaseManager {
 
     }
 
-    public BigDecimal performPurchase(Product product,BigDecimal balance, ProductInventory productInventory) {
+    public BigDecimal performPurchase(Product product, BigDecimal balance, ProductInventory productInventory) {
         int quantity = productInventory.getProducts().getOrDefault(product, 0);
         BigDecimal updatedBalance = balance.subtract(product.getProductPrice());
 

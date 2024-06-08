@@ -1,6 +1,5 @@
 package com.techelevator;
 
-import com.techelevator.util.InvalidSlotLocationException;
 import com.techelevator.util.Logger;
 import com.techelevator.vendingmachine.VendingMachine;
 
@@ -55,7 +54,7 @@ public class Application {
         boolean isFinished = false;
 
         while (!isFinished) {
-
+            vendingMachine.displayMessage("");
             vendingMachine.displayInventory();
             vendingMachine.displayPurchaseMenu();
             String purchaseMenuChoice = userInput.nextLine();
@@ -65,11 +64,11 @@ public class Application {
                     break;
                 case "2":
                     String productSlot = vendingMachine.promptForSlotLocation();
-                    try {
-                        vendingMachine.purchaseProduct(productSlot);
-                    } catch (InvalidSlotLocationException e) {
-                        System.err.println(e.getMessage());
-                    }
+//                    try {
+                        vendingMachine.purchaseProduct(productSlot.toUpperCase());
+//                    } catch (InvalidSlotLocationException e) {
+//                        System.err.println(e.getMessage());
+//                    }
                     break;
                 case "3":
                     vendingMachine.giveChange();
@@ -82,7 +81,7 @@ public class Application {
         }
     }
 
-//    private static boolean isValidSlot(VendingMachine vendingMachine, String slot) {
+    //    private static boolean isValidSlot(VendingMachine vendingMachine, String slot) {
 //        return vendingMachine.isSlotValid(slot);
 //    }
     private static void handleMoneyInput(VendingMachine vendingMachine) {

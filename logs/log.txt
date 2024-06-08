@@ -384,3 +384,33 @@
 2024/06/08 10:36:50 Feed Money: $10.00 $10.00
 2024/06/08 10:39:14 Vending Machine Started
 2024/06/08 10:39:57 Vending Machine Started
+2024/06/08 10:46:39 Vending Machine Started
+2024/06/08 10:48:38 Vending Machine Started
+2024/06/08 10:51:48 Vending Machine Started
+2024/06/08 10:53:31 Vending Machine Started
+2024/06/08 10:55:10 Vending Machine Started
+2024/06/08 11:00:16 Vending Machine Started
+2024/06/08 11:00:35 Vending Machine Started
+2024/06/08 11:00:59 Vending Machine Started
+2024/06/08 11:02:33 Vending Machine Started
+2024/06/08 11:03:43 Vending Machine Started
+2024/06/08 11:04:23 Vending Machine Started
+2024/06/08 11:04:55 Vending Machine Started
+2024/06/08 11:05:42 Vending Machine Started
+2024/06/08 11:26:28 Vending Machine Started
+2024/06/08 11:26:46 Vending Machine Started
+2024/06/08 11:27:41 Feed Money: $10.00 $10.00
+2024/06/08 11:27:46 Little League Chew D2 $0.95 $9.05
+2024/06/08 11:28:05 U-Chews D1 $0.85 $8.20
+2024/06/08 11:28:08 GIVE CHANGE: $8.20 $0.00
+2024/06/08 11:29:37 Vending Machine Started
+2024/06/08 11:29:59 Vending Machine Started
+2024/06/08 11:31:02 Vending Machine Started
+2024/06/08 11:38:37 Vending Machine Started
+2024/06/08 11:40:16 Vending Machine Started
+2024/06/08 11:40:24 Feed Money: $11.00 $11.00
+2024/06/08 11:40:33 U-Chews D1 $0.85 $10.15
+2024/06/08 11:40:37 Chiclets D3 $0.75 $9.40
+2024/06/08 11:40:39 Dr. Salt C2 $1.50 $7.90
+2024/06/08 11:40:41 Potato Crisps A1 $3.05 $4.85
+2024/06/08 11:40:43 GIVE CHANGE: $4.85 $0.00

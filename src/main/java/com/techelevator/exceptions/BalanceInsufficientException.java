@@ -1,4 +1,4 @@
-package com.techelevator.util;
+package com.techelevator.exceptions;
 
 public class BalanceInsufficientException extends RuntimeException{
     public BalanceInsufficientException(String message){
