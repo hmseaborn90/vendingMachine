@@ -33,10 +33,6 @@ public class VendingMachine {
         setBalance(BigDecimal.ZERO);
     }
 
-    private void addToSalesReport(String name, BigDecimal price) {
-        salesReport.addToSalesReport(name, price);
-    }
-
     public void getSalesReport() {
         salesReport.getSalesReport();
     }
@@ -91,11 +87,6 @@ public class VendingMachine {
     public void feedMoney(BigDecimal amountFed) {
         balance = balance.add(amountFed);
     }
-
-//    public boolean isSlotValid(String slot) {
-//        Product product = productInventory.getProductBySlot(slot);
-//        return product != null;
-//    }
 
 }
 

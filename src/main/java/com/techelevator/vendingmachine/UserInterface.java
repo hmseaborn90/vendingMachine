@@ -40,8 +40,6 @@ public class UserInterface {
         return scanner.nextLine().toUpperCase();
     }
     public void displayInventory(Map<Product, Integer> products) {
-//        Map<Product, Integer> sortedProducts = new TreeMap<>(Comparator.comparing(Product::getSlotLocation));
-//        sortedProducts.putAll(products);
         List<Map.Entry<Product, Integer>> sortedProducts = new ArrayList<>(products.entrySet());
         sortedProducts.sort(Comparator.comparing(entry -> entry.getKey().getSlotLocation()));
         for (Map.Entry<Product, Integer> entry : sortedProducts) {
@@ -49,6 +47,7 @@ public class UserInterface {
             int quantity = entry.getValue();
 
             if (quantity == 0) {
+
                 System.out.println(product.getSlotLocation()+ " | " + product.getProductName() + " | " + "Sold Out");
             } else {
                 System.out.println(product.getSlotLocation() + " | " + product.getProductName() + " | " + currency.format(product.getProductPrice()) + "| Items left: " + quantity );
