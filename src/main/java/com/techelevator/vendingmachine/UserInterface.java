@@ -40,9 +40,11 @@ public class UserInterface {
         return scanner.nextLine().toUpperCase();
     }
     public void displayInventory(Map<Product, Integer> products) {
-        List<Map.Entry<Product, Integer>> sortedEntries = new ArrayList<>(products.entrySet());
-        sortedEntries.sort(Comparator.comparing(entry -> entry.getKey().getSlotLocation()));
-        for (Map.Entry<Product, Integer> entry : sortedEntries) {
+        Map<Product, Integer> sortedProducts = new TreeMap<>(Comparator.comparing(Product::getSlotLocation));
+        sortedProducts.putAll(products);
+//        List<Map.Entry<Product, Integer>> sortedEntries = new ArrayList<>(products.entrySet());
+//        sortedEntries.sort(Comparator.comparing(entry -> entry.getKey().getSlotLocation()));
+        for (Map.Entry<Product, Integer> entry : sortedProducts.entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
 

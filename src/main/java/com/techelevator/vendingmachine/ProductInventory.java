@@ -13,8 +13,9 @@ import java.util.TreeMap;
 import static com.techelevator.Application.currency;
 
 public class ProductInventory {
-//    private Map<String, Product> products;
+    //    private Map<String, Product> products;
     private Map<Product, Integer> products;
+
     public ProductInventory() {
         this.products = new HashMap<>();
 
@@ -32,19 +33,25 @@ public class ProductInventory {
                     String productType = productData[3];
                     int productQuantity = 5;
                     Product product = null;
-                    if (productType.equalsIgnoreCase("Chip")) {
-                        product = new Chip(productSlotNumber, productName, productPrice, productType);
-                    } else if (productType.equalsIgnoreCase("Candy")) {
-                        product = new Candy(productSlotNumber, productName, productPrice, productType);
-                    } else if (productType.equalsIgnoreCase("Drink")) {
-                        product = new Drink(productSlotNumber, productName, productPrice, productType);
-                    } else if (productType.equalsIgnoreCase("Gum")) {
-                        product = new Gum(productSlotNumber, productName, productPrice, productType);
+                    switch (productType.toLowerCase()) {
+                        case "chip":
+                            product = new Chip(productSlotNumber, productName, productPrice, productType);
+                            break;
+                        case "candy":
+                            product = new Candy(productSlotNumber, productName, productPrice, productType);
+                            break;
+                        case "drink":
+                            product = new Drink(productSlotNumber, productName, productPrice, productType);
+                            break;
+                        case "gum":
+                            product = new Gum(productSlotNumber, productName, productPrice, productType);
+                            break;
+                        default:
+                            System.err.println("Invalid product type: " + productType);
+                            return; // or handle the error in some appropriate way
                     }
-                    if (product != null) {
-                        products.put(product, productQuantity);
+                    products.put(product, productQuantity);
 
-                    }
                 } catch (NumberFormatException e) {
                     System.err.println("Error parsing product price for: " + productName);
                 }
@@ -60,12 +67,13 @@ public class ProductInventory {
     public Product getProductBySlot(String slotLocation) throws InvalidSlotLocationException {
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
-                if (product.getSlotLocation().equalsIgnoreCase(slotLocation)) {
-                    return product;
-                }
+            if (product.getSlotLocation().equalsIgnoreCase(slotLocation)) {
+                return product;
             }
+        }
         return null;
     }
+
     public Map<Product, Integer> getProducts() {
         return products;
     }
@@ -84,8 +92,6 @@ public class ProductInventory {
 //     }
 //        return productChosen;
 // }
-
-
 
 
 }

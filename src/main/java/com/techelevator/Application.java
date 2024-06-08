@@ -55,6 +55,7 @@ public class Application {
         boolean isFinished = false;
 
         while (!isFinished) {
+
             vendingMachine.displayInventory();
             vendingMachine.displayPurchaseMenu();
             String purchaseMenuChoice = userInput.nextLine();
@@ -63,15 +64,12 @@ public class Application {
                     handleMoneyInput(vendingMachine);
                     break;
                 case "2":
-//                    String productSlot = vendingMachine.promptForSlotLocation();
-//                    if (isValidSlot(vendingMachine, productSlot)) {
-//                        vendingMachine.purchaseProduct(productSlot);
-//                    } else {
-//                        System.err.println("Invalid slot location. Please try again.");
-//                    }
-//                    break;
                     String productSlot = vendingMachine.promptForSlotLocation();
-                    vendingMachine.purchaseProduct(productSlot);
+                    try {
+                        vendingMachine.purchaseProduct(productSlot);
+                    } catch (InvalidSlotLocationException e) {
+                        System.err.println(e.getMessage());
+                    }
                     break;
                 case "3":
                     vendingMachine.giveChange();
