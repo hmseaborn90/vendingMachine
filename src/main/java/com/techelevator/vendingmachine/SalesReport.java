@@ -1,5 +1,7 @@
 package com.techelevator.vendingmachine;
 
+import com.techelevator.util.ConsoleColors;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +21,7 @@ public class SalesReport {
         for (Map.Entry<String, Integer> entry : productsSold.entrySet()) {
             System.out.println(entry.getKey() + "|" + entry.getValue());
         }
-        System.out.println("**TOTAL SALES** " + currency.format(totalSales));
+        System.out.println(ConsoleColors.GREEN_BRIGHT + "     ***TOTAL SALES*** " + currency.format(totalSales));
     }
 
 }

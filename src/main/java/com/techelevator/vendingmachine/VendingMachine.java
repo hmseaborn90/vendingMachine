@@ -1,5 +1,8 @@
 package com.techelevator.vendingmachine;
 
+import com.techelevator.exceptions.InvalidProductTypeException;
+import com.techelevator.exceptions.InvalidSlotLocationException;
+
 import java.io.FileNotFoundException;
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -22,10 +25,9 @@ public class VendingMachine {
     }
 
     public void purchaseProduct(String slotLocation) {
-        Product product = productInventory.getProductBySlot(slotLocation);
-        BigDecimal updatedBalance = purchaseManager.purchaseProduct(product, balance, productInventory);
-        setBalance(updatedBalance);
-
+            Product product = productInventory.getProductBySlot(slotLocation);
+            BigDecimal updatedBalance = purchaseManager.purchaseProduct(product, balance, productInventory);
+            setBalance(updatedBalance);
     }
 
     public void giveChange() {
@@ -37,10 +39,10 @@ public class VendingMachine {
         salesReport.getSalesReport();
     }
 
-    public void loadInventory(String filePath) throws FileNotFoundException {
+    public void loadInventory(String filePath) throws FileNotFoundException, InvalidProductTypeException {
         try {
             productInventory.loadInventoryFromFile(filePath);
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | InvalidProductTypeException e) {
             System.err.println(e.getMessage());
         }
 
@@ -73,6 +75,9 @@ public class VendingMachine {
 
     public String promptForSlotLocation() {
         return ui.promptForSlotSelection();
+    }
+    public String promptUser(String message){
+        return ui.promptUser(message);
     }
 
 

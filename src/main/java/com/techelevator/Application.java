@@ -1,5 +1,8 @@
 package com.techelevator;
 
+import com.techelevator.exceptions.InvalidAmountException;
+import com.techelevator.exceptions.InvalidProductTypeException;
+import com.techelevator.exceptions.InvalidSlotLocationException;
 import com.techelevator.util.Logger;
 import com.techelevator.vendingmachine.VendingMachine;
 
@@ -19,8 +22,8 @@ public class Application {
 
         try {
             vendingMachine.loadInventory("vendingmachine.csv");
-        } catch (FileNotFoundException e) {
-            System.err.println("Error: Inventory file not found");
+        } catch (FileNotFoundException | InvalidProductTypeException e) {
+            System.err.println("Error: Inventory file not found"+ e.getMessage());
             return;
         }
         boolean isShouldExit = false;
@@ -64,11 +67,7 @@ public class Application {
                     break;
                 case "2":
                     String productSlot = vendingMachine.promptForSlotLocation();
-//                    try {
-                        vendingMachine.purchaseProduct(productSlot.toUpperCase());
-//                    } catch (InvalidSlotLocationException e) {
-//                        System.err.println(e.getMessage());
-//                    }
+                        vendingMachine.purchaseProduct(productSlot);
                     break;
                 case "3":
                     vendingMachine.giveChange();
@@ -91,8 +90,8 @@ public class Application {
                 BigDecimal amount = vendingMachine.promptForMoney();
 
                 if (amount.compareTo(new BigDecimal("1.00")) < 0) {
-                    System.err.println("Sorry we can only accept whole dollars at this time please insert acceptable amount");
-                    continue;
+                    throw new InvalidAmountException("Sorry, we can only accept whole dollars at this time. Please insert an acceptable amount.");
+
                 }
                 vendingMachine.feedMoney(amount);
                 vendingMachine.displayCurrentBalance();
@@ -102,9 +101,11 @@ public class Application {
             } catch (NumberFormatException e) {
                 System.err.println("Invalid input please insert dollar amount or change to be added");
                 continue;
+            } catch (InvalidAmountException e){
+                System.err.println(e.getMessage());
+                continue;
             }
-            System.out.println("Do you want to add more money? (Y/N)");
-            String moreMoneyChoice = userInput.nextLine();
+            String moreMoneyChoice = vendingMachine.promptUser("Do you want to add more money? (Y/N)");
             if (!moreMoneyChoice.equalsIgnoreCase("Y")) {
                 break;
             }

@@ -2,6 +2,7 @@ package com.techelevator.vendingmachine;
 
 import com.techelevator.exceptions.BalanceInsufficientException;
 import com.techelevator.exceptions.InvalidSlotLocationException;
+import com.techelevator.util.ConsoleColors;
 import com.techelevator.util.Logger;
 import com.techelevator.exceptions.ProductOutOfStockException;
 
@@ -11,8 +12,6 @@ import static com.techelevator.Application.currency;
 
 public class PurchaseManager {
 
-    private ProductInventory productInventory;
-    private BigDecimal balance;
     private SalesReport salesReport;
 
     public PurchaseManager(SalesReport salesReport) {
@@ -20,7 +19,7 @@ public class PurchaseManager {
     }
 
     public BigDecimal purchaseProduct(Product product, BigDecimal balance, ProductInventory productInventory) {
-        BigDecimal updatedBalance = null;
+        BigDecimal updatedBalance = balance;
         try {
             if (isPurchaseValid(product, balance, productInventory)) {
                 updatedBalance = performPurchase(product, balance, productInventory);
@@ -61,11 +60,13 @@ public class PurchaseManager {
                 product.getProductName(),
                 product.getSlotLocation(),
                 currency.format(product.getProductPrice()));
-        System.out.println("Balance: " + balanceRemaining);
-        System.out.println("Name: " +
+
+
+        System.out.println(ConsoleColors.GREEN + "Balance: " + balanceRemaining + ConsoleColors.RESET);
+        System.out.println(ConsoleColors.BLUE + "Name: " +
                 product.getProductName() +
                 " Price: " +
-                currency.format(product.getProductPrice()) + " " + product);
+                currency.format(product.getProductPrice()) + " " + product + ConsoleColors.RESET);
         Logger.log(logMessage + " " + balanceRemaining);
         return updatedBalance;
     }

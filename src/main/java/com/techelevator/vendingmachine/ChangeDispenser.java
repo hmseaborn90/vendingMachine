@@ -1,5 +1,6 @@
 package com.techelevator.vendingmachine;
 
+import com.techelevator.util.ConsoleColors;
 import com.techelevator.util.Logger;
 
 import java.math.BigDecimal;
@@ -16,7 +17,7 @@ public class ChangeDispenser {
         BigDecimal dimes = remainder.divide(new BigDecimal("10"), 0, RoundingMode.DOWN);
         remainder = remainder.remainder(new BigDecimal("10"));
         BigDecimal nickels = remainder.divide(new BigDecimal("5"), 0, RoundingMode.DOWN);
-        String formattedString = String.format("Change returned %s\nQuarters: %d\nDimes: %d\nNickels: %d",
+        String formattedString = String.format(ConsoleColors.GREEN + "     Change returned %s\n     Quarters: %d\n     Dimes: %d\n     Nickels: %d\n",
                 currency.format(balance), quarters.intValue(), dimes.intValue(), nickels.intValue());
 
 

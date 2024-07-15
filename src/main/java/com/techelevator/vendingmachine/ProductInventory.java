@@ -1,5 +1,6 @@
 package com.techelevator.vendingmachine;
 
+import com.techelevator.exceptions.InvalidProductTypeException;
 import com.techelevator.exceptions.InvalidSlotLocationException;
 
 import java.io.File;
@@ -18,7 +19,7 @@ public class ProductInventory {
 
     }
 
-    public void loadInventoryFromFile(String filePath) throws FileNotFoundException {
+    public void loadInventoryFromFile(String filePath) throws FileNotFoundException, InvalidProductTypeException{
         File csvFile = new File(filePath);
         try (Scanner fileInput = new Scanner(csvFile)) {
             while (fileInput.hasNextLine()) {
@@ -44,19 +45,18 @@ public class ProductInventory {
                             product = new Gum(productSlotNumber, productName, productPrice, productType);
                             break;
                         default:
-                            System.err.println("Invalid product type: " + productType);
-                            return; // or handle the error in some appropriate way
+                            throw new InvalidProductTypeException("Invalid product type: " + productType);
                     }
                     products.put(product, productQuantity);
 
                 } catch (NumberFormatException e) {
-                    System.err.println("Error parsing product price for: " + productName);
+                    throw new NumberFormatException("Invalid product price for "+ productName + e.getMessage());
+                } catch (InvalidProductTypeException e){
+                    throw new InvalidProductTypeException("incorrect product type found " + e.getMessage());
                 }
             }
         } catch (FileNotFoundException e) {
             System.err.println("The file was not found " + csvFile.getAbsolutePath());
-        } catch (Exception e) {
-            System.err.println("An error occurred while loading inventory from file: " + e.getMessage());
         }
     }
 
@@ -75,20 +75,7 @@ public class ProductInventory {
         return products;
     }
 
-// public Product getProductBySlot(String slotLocation){
-//        Product productChosen = null;
-//     for (Map.Entry<Product, Integer> entry : products.entrySet()){
-//         Product product = entry.getKey();
-//         try{
-//             if(product.getSlotLocation().equalsIgnoreCase(slotLocation)){
-//                 productChosen = product;
-//             }
-//         }catch (InvalidSlotLocationException e){
-//             throw new InvalidSlotLocationException("Invalid Slot location enter valid slot location");
-//         }
-//     }
-//        return productChosen;
-// }
+
 
 
 }

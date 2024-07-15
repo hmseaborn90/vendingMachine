@@ -13,7 +13,7 @@ public class Logger {
     private static PrintWriter logWriter;
 
 
-    public static void log(String message) {
+    public static void log(String message) throws LoggerException {
         File logs = new File("logs");
         logs.mkdir();
         LocalDateTime date = LocalDateTime.now();
@@ -24,7 +24,7 @@ public class Logger {
                 String destinationPath = "logs/";
                 logWriter = new PrintWriter(new FileWriter(destinationPath + "log.txt", true));
 
-            } catch (IOException e) {
+            } catch (LoggerException | IOException e) {
                 throw new LoggerException("error writing to log file" + e.getMessage());
 
             }
